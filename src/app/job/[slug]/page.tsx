@@ -36,7 +36,7 @@ const jobs = {
   },
 };
 
-function Page({ params }: { params: { slug: string } }) {
+export default function Page({ params }: { params: { slug: string } }) {
   const job = jobs[params.slug as keyof typeof jobs];
   if (!job) return notFound();
 
@@ -74,6 +74,3 @@ function Page({ params }: { params: { slug: string } }) {
     </div>
   );
 }
-
-Page.displayName = "JobPage";
-export default Page;
