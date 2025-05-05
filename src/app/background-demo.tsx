@@ -12,11 +12,11 @@ export default function BackgroundDemo() {
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-slate-900 to-gray-900 overflow-hidden">
       <BackgroundAnimations
-        type={animationType as any}
+        type={animationType as AnimationType}
         color={primaryColor}
         secondary={secondaryColor}
         opacity={opacity}
-        speed={speed as any}
+        speed={speed as "slow" | "medium" | "fast"}
       />
 
       <div className="relative z-10 container mx-auto px-4 py-20">

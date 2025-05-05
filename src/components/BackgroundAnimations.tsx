@@ -29,15 +29,9 @@ export default function BackgroundAnimations({
   className = "",
 }: BackgroundAnimationsProps) {
   const [mounted, setMounted] = useState(false);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     setMounted(true);
-    setDimensions({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
 
     const handleResize = () => {
       setDimensions({
