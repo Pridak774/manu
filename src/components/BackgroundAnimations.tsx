@@ -28,31 +28,20 @@ export default function BackgroundAnimations({
   interactive = false,
   className = "",
 }: BackgroundAnimationsProps) {
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Set initial dimensions
-    setDimensions({ width: window.innerWidth, height: window.innerHeight });
 
     const handleResize = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+      // Handle resize logic if needed
     };
 
     window.addEventListener("resize", handleResize);
 
     if (interactive) {
       const handleMouseMove = (e: MouseEvent) => {
-        setMousePosition({
-          x: e.clientX,
-          y: e.clientY,
-        });
+        // Handle mouse move logic if needed
       };
 
       window.addEventListener("mousemove", handleMouseMove);
@@ -433,7 +422,6 @@ export default function BackgroundAnimations({
           />
         </svg>
       </div>
-      {/* eslint-disable-next-line react/no-unknown-property */}
       <style jsx>{`
         .food-icons-animation {
           position: absolute;
@@ -486,8 +474,6 @@ export default function BackgroundAnimations({
   return (
     <div className="background-animation-container absolute inset-0 z-0 overflow-hidden">
       {renderAnimationType()}
-
-      {/* eslint-disable-next-line react/no-unknown-property */}
       <style jsx>{`
         .background-animation-container {
           pointer-events: ${interactive ? "auto" : "none"};
