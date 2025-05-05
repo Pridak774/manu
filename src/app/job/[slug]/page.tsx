@@ -36,7 +36,8 @@ const jobs = {
   },
 };
 
-function JobPage({ params }: { params: { slug: string } }) {
+// Rename to Page for Next.js convention
+function Page({ params }: { params: { slug: string } }) {
   const job = jobs[params.slug as keyof typeof jobs];
   if (!job) return notFound();
 
@@ -75,4 +76,5 @@ function JobPage({ params }: { params: { slug: string } }) {
   );
 }
 
-export default JobPage;
+Page.displayName = "JobPage";
+export default Page;
