@@ -36,14 +36,7 @@ const jobs = {
   },
 };
 
-// Define the type for the page props
-interface JobPageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default function Page({ params }: JobPageProps) {
+export default function Page({ params }: { params: { slug: string } }) {
   const job = jobs[params.slug as keyof typeof jobs];
   if (!job) return notFound();
 

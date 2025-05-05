@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
-import BackgroundAnimations, { AnimationType } from "@/components/BackgroundAnimations";
+import BackgroundAnimations, {
+  AnimationType,
+} from "@/components/BackgroundAnimations";
 
 export default function BackgroundDemo() {
   const [animationType, setAnimationType] = useState("grid");
@@ -36,7 +38,9 @@ export default function BackgroundDemo() {
               <select
                 id="animationTypeSelect"
                 value={animationType}
-                onChange={(e) => setAnimationType(e.target.value as AnimationType)}
+                onChange={(e) =>
+                  setAnimationType(e.target.value as AnimationType)
+                }
                 className="w-full bg-slate-800 text-white rounded px-3 py-2 border border-slate-600"
               >
                 <option value="grid">Grid Lines</option>
@@ -58,7 +62,9 @@ export default function BackgroundDemo() {
               <select
                 id="animationSpeedSelect"
                 value={speed}
-                onChange={(e) => setSpeed(e.target.value as "slow" | "medium" | "fast")}
+                onChange={(e) =>
+                  setSpeed(e.target.value as "slow" | "medium" | "fast")
+                }
                 className="w-full bg-slate-800 text-white rounded px-3 py-2 border border-slate-600"
               >
                 <option value="slow">Slow</option>

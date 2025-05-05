@@ -28,9 +28,7 @@ export default function BackgroundAnimations({
   interactive = false,
   className = "",
 }: BackgroundAnimationsProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const [mounted, setMounted] = useState(false);
@@ -84,7 +82,6 @@ export default function BackgroundAnimations({
       <div className="grid-lines">
         {[...Array(10)].map((_, i) => (
           <div
-            // eslint-disable-next-line react/no-array-index-key
             key={`h-${i}`}
             className="h-line"
             style={{
@@ -97,7 +94,6 @@ export default function BackgroundAnimations({
         ))}
         {[...Array(10)].map((_, i) => (
           <div
-            // eslint-disable-next-line react/no-array-index-key
             key={`v-${i}`}
             className="v-line"
             style={{
@@ -137,7 +133,6 @@ export default function BackgroundAnimations({
         {/* Building Windows */}
         {[...Array(20)].map((_, i) => (
           <rect
-            // eslint-disable-next-line react/no-array-index-key
             key={`window-${i}`}
             className="building-window"
             x={100 + i * 65}
@@ -160,7 +155,6 @@ export default function BackgroundAnimations({
       <div className="location-pins">
         {[...Array(6)].map((_, i) => (
           <div
-            // eslint-disable-next-line react/no-array-index-key
             key={`pin-${i}`}
             className="location-pin"
             style={{
