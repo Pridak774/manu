@@ -36,7 +36,14 @@ const jobs = {
   },
 };
 
-export default function Page({ params }: { params: { slug: string } }) {
+// Define the type for the page props
+interface JobPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function Page({ params }: JobPageProps) {
   const job = jobs[params.slug as keyof typeof jobs];
   if (!job) return notFound();
 
@@ -45,10 +52,22 @@ export default function Page({ params }: { params: { slug: string } }) {
       <div className="max-w-xl w-full bg-gray-900 rounded-xl shadow-xl p-8 mt-24 mb-12">
         <h1 className="text-4xl font-bold mb-4 text-blue-400">{job.title}</h1>
         <p className="text-lg text-gray-300 mb-6">{job.description}</p>
-        <ul className="mb-8 space-y-2">
-          {job.details.map((d, i) => (
-            <li key={i} className="flex items-center gap-2 text-gray-200">
-              <span className="text-blue-400">•</span> {d}
+        <ul className="list-disc pl-6 space-y-1">
+          {job.details.map((benefit) => (
+            <li key={benefit} className="flex items-center gap-2 text-gray-200">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-green-400 flex-shrink-0"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              {benefit}
             </li>
           ))}
         </ul>

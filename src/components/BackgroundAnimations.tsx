@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-type AnimationType =
+export type AnimationType =
   | "grid"
   | "cityscape"
   | "routes"
@@ -10,13 +10,13 @@ type AnimationType =
   | "foodIcons";
 
 interface BackgroundAnimationsProps {
-  type?: AnimationType;
-  color?: string;
-  secondary?: string;
-  opacity?: number;
-  speed?: "slow" | "medium" | "fast";
-  interactive?: boolean;
-  className?: string;
+  readonly type?: AnimationType;
+  readonly color?: string;
+  readonly secondary?: string;
+  readonly opacity?: number;
+  readonly speed?: "slow" | "medium" | "fast";
+  readonly interactive?: boolean;
+  readonly className?: string;
 }
 
 export default function BackgroundAnimations({
@@ -28,10 +28,17 @@ export default function BackgroundAnimations({
   interactive = false,
   className = "",
 }: BackgroundAnimationsProps) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    // Set initial dimensions
+    setDimensions({ width: window.innerWidth, height: window.innerHeight });
 
     const handleResize = () => {
       setDimensions({
@@ -77,6 +84,7 @@ export default function BackgroundAnimations({
       <div className="grid-lines">
         {[...Array(10)].map((_, i) => (
           <div
+            // eslint-disable-next-line react/no-array-index-key
             key={`h-${i}`}
             className="h-line"
             style={{
@@ -89,6 +97,7 @@ export default function BackgroundAnimations({
         ))}
         {[...Array(10)].map((_, i) => (
           <div
+            // eslint-disable-next-line react/no-array-index-key
             key={`v-${i}`}
             className="v-line"
             style={{
@@ -128,6 +137,7 @@ export default function BackgroundAnimations({
         {/* Building Windows */}
         {[...Array(20)].map((_, i) => (
           <rect
+            // eslint-disable-next-line react/no-array-index-key
             key={`window-${i}`}
             className="building-window"
             x={100 + i * 65}
@@ -150,6 +160,7 @@ export default function BackgroundAnimations({
       <div className="location-pins">
         {[...Array(6)].map((_, i) => (
           <div
+            // eslint-disable-next-line react/no-array-index-key
             key={`pin-${i}`}
             className="location-pin"
             style={{
@@ -236,7 +247,7 @@ export default function BackgroundAnimations({
       <div className={`particles-animation ${className}`} style={{ opacity }}>
         {particles.map((particle) => (
           <div
-            key={`particle-${particle.id}`}
+            key={particle.id}
             className="floating-particle"
             style={{
               width: `${particle.size}px`,
@@ -428,6 +439,31 @@ export default function BackgroundAnimations({
           />
         </svg>
       </div>
+      {/* eslint-disable-next-line react/no-unknown-property */}
+      <style jsx>{`
+        .food-icons-animation {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        .food-icon {
+          position: absolute;
+          animation: float 10s infinite ease-in-out alternate;
+          will-change: transform;
+        }
+
+        @keyframes float {
+          0% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(15deg);
+          }
+          100% {
+            transform: translateY(0px) rotate(-15deg);
+          }
+        }
+      `}</style>
     </div>
   );
 
@@ -457,6 +493,7 @@ export default function BackgroundAnimations({
     <div className="background-animation-container absolute inset-0 z-0 overflow-hidden">
       {renderAnimationType()}
 
+      {/* eslint-disable-next-line react/no-unknown-property */}
       <style jsx>{`
         .background-animation-container {
           pointer-events: ${interactive ? "auto" : "none"};

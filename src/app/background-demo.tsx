@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import BackgroundAnimations from "../components/BackgroundAnimations";
+import BackgroundAnimations, { AnimationType } from "@/components/BackgroundAnimations";
 
 export default function BackgroundDemo() {
   const [animationType, setAnimationType] = useState("grid");
@@ -27,10 +27,16 @@ export default function BackgroundDemo() {
         <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-2xl mx-auto">
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div>
-              <label className="block text-white mb-2">Animation Type</label>
+              <label
+                htmlFor="animationTypeSelect"
+                className="block text-white mb-2"
+              >
+                Animation Type
+              </label>
               <select
+                id="animationTypeSelect"
                 value={animationType}
-                onChange={(e) => setAnimationType(e.target.value)}
+                onChange={(e) => setAnimationType(e.target.value as AnimationType)}
                 className="w-full bg-slate-800 text-white rounded px-3 py-2 border border-slate-600"
               >
                 <option value="grid">Grid Lines</option>
@@ -43,10 +49,16 @@ export default function BackgroundDemo() {
             </div>
 
             <div>
-              <label className="block text-white mb-2">Animation Speed</label>
+              <label
+                htmlFor="animationSpeedSelect"
+                className="block text-white mb-2"
+              >
+                Animation Speed
+              </label>
               <select
+                id="animationSpeedSelect"
                 value={speed}
-                onChange={(e) => setSpeed(e.target.value)}
+                onChange={(e) => setSpeed(e.target.value as "slow" | "medium" | "fast")}
                 className="w-full bg-slate-800 text-white rounded px-3 py-2 border border-slate-600"
               >
                 <option value="slow">Slow</option>
@@ -58,15 +70,22 @@ export default function BackgroundDemo() {
 
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div>
-              <label className="block text-white mb-2">Primary Color</label>
+              <label
+                htmlFor="primaryColorInput"
+                className="block text-white mb-2"
+              >
+                Primary Color
+              </label>
               <div className="flex items-center">
                 <input
+                  id="primaryColorInput"
                   type="color"
                   value={primaryColor}
                   onChange={(e) => setPrimaryColor(e.target.value)}
                   className="w-10 h-10 rounded mr-2"
                 />
                 <input
+                  aria-label="Primary color hex value"
                   type="text"
                   value={primaryColor}
                   onChange={(e) => setPrimaryColor(e.target.value)}
@@ -76,15 +95,22 @@ export default function BackgroundDemo() {
             </div>
 
             <div>
-              <label className="block text-white mb-2">Secondary Color</label>
+              <label
+                htmlFor="secondaryColorInput"
+                className="block text-white mb-2"
+              >
+                Secondary Color
+              </label>
               <div className="flex items-center">
                 <input
+                  id="secondaryColorInput"
                   type="color"
                   value={secondaryColor}
                   onChange={(e) => setSecondaryColor(e.target.value)}
                   className="w-10 h-10 rounded mr-2"
                 />
                 <input
+                  aria-label="Secondary color hex value"
                   type="text"
                   value={secondaryColor}
                   onChange={(e) => setSecondaryColor(e.target.value)}
@@ -95,8 +121,11 @@ export default function BackgroundDemo() {
           </div>
 
           <div className="mb-6">
-            <label className="block text-white mb-2">Opacity: {opacity}</label>
+            <label htmlFor="opacityRange" className="block text-white mb-2">
+              Opacity: {opacity}
+            </label>
             <input
+              id="opacityRange"
               type="range"
               min="0.05"
               max="0.5"
