@@ -36,7 +36,7 @@ const jobs = {
   },
 };
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default function ({ params }: { params: { slug: string } }) {
   const job = jobs[params.slug as keyof typeof jobs];
   if (!job) return notFound();
 
