@@ -40,8 +40,8 @@ export default function BackgroundAnimations({
     window.addEventListener("resize", handleResize);
 
     if (interactive) {
-      const handleMouseMove = (e: MouseEvent) => {
-        // Handle mouse move logic if needed
+      const handleMouseMove = () => {
+        // No-op: mouse move handler is required for event listener, but not used
       };
 
       window.addEventListener("mousemove", handleMouseMove);
