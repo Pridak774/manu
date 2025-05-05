@@ -36,7 +36,7 @@ const jobs = {
   },
 };
 
-export default function ({ params }: { params: { slug: string } }) {
+function JobPage({ params }: { params: { slug: string } }) {
   const job = jobs[params.slug as keyof typeof jobs];
   if (!job) return notFound();
 
@@ -66,7 +66,7 @@ export default function ({ params }: { params: { slug: string } }) {
         </ul>
         <a
           href="/page#aplica"
-          className="inline-block bg-blue-600 hover:bg-blue-700 transition rounded-full px-8 py-3 font-semibold text-lg shadow-lg"
+          className="inline-block mt-6 bg-blue-600 hover:bg-blue-700 transition rounded-full px-8 py-3 font-semibold text-lg shadow-lg"
         >
           Aplică pentru acest job
         </a>
@@ -74,3 +74,5 @@ export default function ({ params }: { params: { slug: string } }) {
     </div>
   );
 }
+
+export default JobPage;

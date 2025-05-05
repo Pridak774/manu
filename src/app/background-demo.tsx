@@ -4,7 +4,7 @@ import BackgroundAnimations, {
   AnimationType,
 } from "@/components/BackgroundAnimations";
 
-export default function BackgroundDemo() {
+function BackgroundDemo() {
   const [animationType, setAnimationType] = useState("grid");
   const [primaryColor, setPrimaryColor] = useState("#3B82F6");
   const [secondaryColor, setSecondaryColor] = useState("#F97316");
@@ -171,3 +171,6 @@ export default function BackgroundDemo() {
     </div>
   );
 }
+
+BackgroundDemo.displayName = "BackgroundDemo";
+export default BackgroundDemo;

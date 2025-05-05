@@ -79,7 +79,7 @@ function Navbar() {
   );
 }
 
-export default function Home() {
+function Home() {
   const [loading, setLoading] = useState(true);
 
   const handlePreloaderComplete = () => {
@@ -584,3 +584,5 @@ export default function Home() {
     </>
   );
 }
+Home.displayName = "Home";
+export default Home;

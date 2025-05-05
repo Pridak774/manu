@@ -9,7 +9,7 @@ interface BackgroundAnimationProps {
   readonly animateRoutes?: boolean;
 }
 
-export default function BackgroundAnimation({
+function BackgroundAnimation({
   children,
   opacity = 0.15,
   animateCity = true,
@@ -292,3 +292,5 @@ export default function BackgroundAnimation({
     </div>
   );
 }
+BackgroundAnimation.displayName = "BackgroundAnimation";
+export default BackgroundAnimation;

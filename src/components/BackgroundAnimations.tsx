@@ -19,7 +19,7 @@ interface BackgroundAnimationsProps {
   readonly className?: string;
 }
 
-export default function BackgroundAnimations({
+function BackgroundAnimations({
   type = "grid",
   color = "#3B82F6", // Default blue
   secondary = "#F97316", // Default orange
@@ -735,6 +735,9 @@ export default function BackgroundAnimations({
     </div>
   );
 }
+
+BackgroundAnimations.displayName = "BackgroundAnimations";
+export default BackgroundAnimations;
 
 // Usage examples:
 // <BackgroundAnimations type="grid" color="#3B82F6" opacity={0.1} />
