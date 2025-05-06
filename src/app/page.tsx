@@ -523,6 +523,72 @@ function Home() {
                   </button>
                 </form>
               </section>
+              {/* COLABORARE RESTAURANTE */}
+              <section
+                id="colaborare-restaurante"
+                className="w-full max-w-lg bg-blue-50 dark:bg-slate-800 rounded-xl p-6 sm:p-8 shadow-lg mb-12"
+              >
+                <h2 className="text-2xl font-bold text-blue-900 dark:text-white mb-4">
+                  Restaurante? Colaborează cu noi!
+                </h2>
+                <p className="mb-4 text-blue-900 dark:text-blue-100">
+                  Ești proprietar de restaurant și vrei să-ți crești vânzările? Completează formularul de mai jos și te contactăm rapid pentru a discuta o colaborare avantajoasă!
+                </p>
+                <form
+                  name="restaurant-collab"
+                  method="POST"
+                  data-netlify="true"
+                  style={{ display: "flex", flexDirection: "column", gap: 12 }}
+                >
+                  <input type="hidden" name="form-name" value="restaurant-collab" />
+                  <input
+                    name="restaurantName"
+                    type="text"
+                    placeholder="Nume restaurant"
+                    required
+                    style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+                  />
+                  <input
+                    name="contactName"
+                    type="text"
+                    placeholder="Nume persoană de contact"
+                    required
+                    style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+                  />
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    required
+                    style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+                  />
+                  <input
+                    name="phone"
+                    type="tel"
+                    placeholder="Telefon"
+                    required
+                    style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+                  />
+                  <textarea
+                    name="message"
+                    placeholder="Detalii despre restaurant sau întrebări (opțional)"
+                    rows={3}
+                    style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+                  />
+                  <button
+                    type="submit"
+                    style={{
+                      padding: 10,
+                      borderRadius: 6,
+                      background: "#2563eb",
+                      color: "#fff",
+                      fontWeight: 600,
+                    }}
+                  >
+                    Trimite cererea de colaborare
+                  </button>
+                </form>
+              </section>
               {/* CONTACT & SOCIAL */}
               <section
                 id="contact"
