@@ -80,6 +80,86 @@ function Navbar() {
   );
 }
 
+function RestaurantCollabForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = formRef.current;
+    if (!form) return;
+    const data = new FormData(form);
+    fetch("/", {
+      method: "POST",
+      body: data,
+    }).then(() => {
+      setSubmitted(true);
+      form.reset();
+    });
+  };
+  return submitted ? (
+    <div style={{ color: "green", margin: "16px 0" }}>
+      Cererea de colaborare a fost trimisă cu succes!
+    </div>
+  ) : (
+    <form
+      ref={formRef}
+      name="restaurant-collab"
+      method="POST"
+      data-netlify="true"
+      onSubmit={handleSubmit}
+      style={{ display: "flex", flexDirection: "column", gap: 12 }}
+    >
+      <input type="hidden" name="form-name" value="restaurant-collab" />
+      <input
+        name="restaurantName"
+        type="text"
+        placeholder="Nume restaurant"
+        required
+        style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+      />
+      <input
+        name="contactName"
+        type="text"
+        placeholder="Nume persoană de contact"
+        required
+        style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+      />
+      <input
+        name="email"
+        type="email"
+        placeholder="Email"
+        required
+        style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+      />
+      <input
+        name="phone"
+        type="tel"
+        placeholder="Telefon"
+        required
+        style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+      />
+      <textarea
+        name="message"
+        placeholder="Detalii despre restaurant sau întrebări (opțional)"
+        rows={3}
+        style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+      />
+      <button
+        type="submit"
+        style={{
+          padding: 10,
+          borderRadius: 6,
+          background: "#2563eb",
+          color: "#fff",
+          fontWeight: 600,
+        }}
+      >
+        Trimite cererea de colaborare
+      </button>
+    </form>
+  );
+}
+
 function Home() {
   const [loading, setLoading] = useState(true);
 
@@ -537,116 +617,7 @@ function Home() {
                   Completează formularul de mai jos și te contactăm rapid pentru
                   a discuta o colaborare avantajoasă!
                 </p>
-                {/* Restaurant Collaboration Form with Success Message */}
-                {(() => {
-                  const [submitted, setSubmitted] = useState(false);
-                  const formRef = useRef<HTMLFormElement>(null);
-                  const handleSubmit = (
-                    e: React.FormEvent<HTMLFormElement>
-                  ) => {
-                    e.preventDefault();
-                    const form = formRef.current;
-                    if (!form) return;
-                    const data = new FormData(form);
-                    fetch("/", {
-                      method: "POST",
-                      body: data,
-                    }).then(() => {
-                      setSubmitted(true);
-                      form.reset();
-                    });
-                  };
-                  return submitted ? (
-                    <div style={{ color: "green", margin: "16px 0" }}>
-                      Cererea de colaborare a fost trimisă cu succes!
-                    </div>
-                  ) : (
-                    <form
-                      ref={formRef}
-                      name="restaurant-collab"
-                      method="POST"
-                      data-netlify="true"
-                      onSubmit={handleSubmit}
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 12,
-                      }}
-                    >
-                      <input
-                        type="hidden"
-                        name="form-name"
-                        value="restaurant-collab"
-                      />
-                      <input
-                        name="restaurantName"
-                        type="text"
-                        placeholder="Nume restaurant"
-                        required
-                        style={{
-                          padding: 8,
-                          borderRadius: 6,
-                          border: "1px solid #ddd",
-                        }}
-                      />
-                      <input
-                        name="contactName"
-                        type="text"
-                        placeholder="Nume persoană de contact"
-                        required
-                        style={{
-                          padding: 8,
-                          borderRadius: 6,
-                          border: "1px solid #ddd",
-                        }}
-                      />
-                      <input
-                        name="email"
-                        type="email"
-                        placeholder="Email"
-                        required
-                        style={{
-                          padding: 8,
-                          borderRadius: 6,
-                          border: "1px solid #ddd",
-                        }}
-                      />
-                      <input
-                        name="phone"
-                        type="tel"
-                        placeholder="Telefon"
-                        required
-                        style={{
-                          padding: 8,
-                          borderRadius: 6,
-                          border: "1px solid #ddd",
-                        }}
-                      />
-                      <textarea
-                        name="message"
-                        placeholder="Detalii despre restaurant sau întrebări (opțional)"
-                        rows={3}
-                        style={{
-                          padding: 8,
-                          borderRadius: 6,
-                          border: "1px solid #ddd",
-                        }}
-                      />
-                      <button
-                        type="submit"
-                        style={{
-                          padding: 10,
-                          borderRadius: 6,
-                          background: "#2563eb",
-                          color: "#fff",
-                          fontWeight: 600,
-                        }}
-                      >
-                        Trimite cererea de colaborare
-                      </button>
-                    </form>
-                  );
-                })()}
+                <RestaurantCollabForm />
               </section>
               {/* AI Copilot Box below forms */}
               <div style={{ margin: "48px auto 0", maxWidth: 400 }}>
