@@ -59,7 +59,7 @@ export default function AIBotBox() {
         data?.candidates?.[0]?.content?.parts?.[0]?.text ||
         "Sorry, I couldn't get a response.";
       setMessages((msgs) => [...msgs, { role: "ai", text: aiText }]);
-    } catch (err) {
+    } catch {
       setMessages((msgs) => [
         ...msgs,
         { role: "ai", text: "Error connecting to AI service." },

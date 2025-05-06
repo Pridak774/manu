@@ -532,7 +532,9 @@ function Home() {
                   Restaurante? Colaborează cu noi!
                 </h2>
                 <p className="mb-4 text-blue-900 dark:text-blue-100">
-                  Ești proprietar de restaurant și vrei să-ți crești vânzările? Completează formularul de mai jos și te contactăm rapid pentru a discuta o colaborare avantajoasă!
+                  Ești proprietar de restaurant și vrei să-ți crești vânzările?
+                  Completează formularul de mai jos și te contactăm rapid pentru
+                  a discuta o colaborare avantajoasă!
                 </p>
                 <form
                   name="restaurant-collab"
@@ -540,40 +542,64 @@ function Home() {
                   data-netlify="true"
                   style={{ display: "flex", flexDirection: "column", gap: 12 }}
                 >
-                  <input type="hidden" name="form-name" value="restaurant-collab" />
+                  <input
+                    type="hidden"
+                    name="form-name"
+                    value="restaurant-collab"
+                  />
                   <input
                     name="restaurantName"
                     type="text"
                     placeholder="Nume restaurant"
                     required
-                    style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+                    style={{
+                      padding: 8,
+                      borderRadius: 6,
+                      border: "1px solid #ddd",
+                    }}
                   />
                   <input
                     name="contactName"
                     type="text"
                     placeholder="Nume persoană de contact"
                     required
-                    style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+                    style={{
+                      padding: 8,
+                      borderRadius: 6,
+                      border: "1px solid #ddd",
+                    }}
                   />
                   <input
                     name="email"
                     type="email"
                     placeholder="Email"
                     required
-                    style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+                    style={{
+                      padding: 8,
+                      borderRadius: 6,
+                      border: "1px solid #ddd",
+                    }}
                   />
                   <input
                     name="phone"
                     type="tel"
                     placeholder="Telefon"
                     required
-                    style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+                    style={{
+                      padding: 8,
+                      borderRadius: 6,
+                      border: "1px solid #ddd",
+                    }}
                   />
                   <textarea
                     name="message"
                     placeholder="Detalii despre restaurant sau întrebări (opțional)"
                     rows={3}
-                    style={{ padding: 8, borderRadius: 6, border: "1px solid #ddd" }}
+                    style={{
+                      padding: 8,
+                      borderRadius: 6,
+                      border: "1px solid #ddd",
+                    }}
                   />
                   <button
                     type="submit"
