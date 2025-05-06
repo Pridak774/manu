@@ -3,6 +3,7 @@ import Preloader from "./Preloader";
 import { useState, useRef } from "react";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import Image from "next/image";
+import AIBotBox from "@/components/AIBotBox";
 
 function Navbar() {
   return (
@@ -125,7 +126,7 @@ function Home() {
                 </div>
               </section>
               {/* Netlify Forms shadow form for detection */}
-              <form name="job-application" netlify="true" hidden>
+              <form name="job-application" data-netlify="true" hidden>
                 <input type="text" name="name" />
                 <input type="email" name="email" />
                 <textarea name="message" />
@@ -540,7 +541,9 @@ function Home() {
                 {(() => {
                   const [submitted, setSubmitted] = useState(false);
                   const formRef = useRef<HTMLFormElement>(null);
-                  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+                  const handleSubmit = (
+                    e: React.FormEvent<HTMLFormElement>
+                  ) => {
                     e.preventDefault();
                     const form = formRef.current;
                     if (!form) return;
