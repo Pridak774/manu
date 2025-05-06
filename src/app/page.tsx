@@ -124,6 +124,12 @@ function Home() {
                   {/* SVG icons remain unchanged for best performance */}
                 </div>
               </section>
+              {/* Netlify Forms shadow form for detection */}
+              <form name="job-application" netlify="true" hidden>
+                <input type="text" name="name" />
+                <input type="email" name="email" />
+                <textarea name="message" />
+              </form>
               {/* DESPRE NOI */}
               <section
                 id="despre"
